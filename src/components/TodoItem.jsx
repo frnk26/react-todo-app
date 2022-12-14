@@ -1,17 +1,21 @@
 import React from 'react';
 // import react icons
 import { FaTrashAlt } from 'react-icons/fa';
-const TodoItem = (items) => {
+const TodoItem = ({ item, checkHandle, deleteHandle }) => {
   return (
-    <div>
-      {items.map((item) => (
-        <li>
-          <input type="checkbox" checked={item.checked} />
-          <label htmlFor="">{item.item}</label>
-          <FaTrashAlt role="button" tabIndex="0" />
-        </li>
-      ))}
-    </div>
+    <li>
+      <input
+        type="checkbox"
+        onChange={() => checkHandle(item.id)}
+        checked={item.checked}
+      />
+      <label htmlFor="">{item.item}</label>
+      <FaTrashAlt
+        onClick={() => deleteHandle(item.id)}
+        role="button"
+        tabIndex="0"
+      />
+    </li>
   );
 };
 
